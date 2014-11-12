@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>classpath:/resources/log4j.properties</param-value>
+	</context-param>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value> classpath:/resources/applicationContext*.xml
+		</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>
+			org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>
+			org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<servlet>
+		<servlet-name>webdispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:/resources/dispatcher-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>webdispatcher</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<session-config>
+		<session-timeout>1000</session-timeout>
+	</session-config>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>User</servlet-name>
+		<servlet-class>com.forum.servlet.UserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>User</servlet-name>
+		<url-pattern>/User</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SysItem</servlet-name>
+		<servlet-class>com.forum.servlet.SysItemServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SysItem</servlet-name>
+		<url-pattern>/SysItem</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Provider</servlet-name>
+		<servlet-class>com.forum.servlet.ProviderServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Provider</servlet-name>
+		<url-pattern>/Provider</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ProviderItem</servlet-name>
+		<servlet-class>com.forum.servlet.ProviderItemServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProviderItem</servlet-name>
+		<url-pattern>/ProviderItem</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Buynote</servlet-name>
+		<servlet-class>com.forum.servlet.BuynoteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Buynote</servlet-name>
+		<url-pattern>/Buynote</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Appinfo</servlet-name>
+		<servlet-class>com.forum.servlet.AppinfoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Appinfo</servlet-name>
+		<url-pattern>/Appinfo</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Appraise</servlet-name>
+		<servlet-class>com.forum.servlet.AppraiseServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Appraise</servlet-name>
+		<url-pattern>/Appraise</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ServiceClassServlet</servlet-name>
+		<servlet-class>com.forum.servlet.ServiceClassServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ServiceClassServlet</servlet-name>
+		<url-pattern>/ServiceClassServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ServiceServlet</servlet-name>
+		<servlet-class>com.forum.servlet.ServiceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ServiceServlet</servlet-name>
+		<url-pattern>/ServiceServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CarServlet</servlet-name>
+		<servlet-class>com.forum.servlet.CarServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CarServlet</servlet-name>
+		<url-pattern>/CarServlet</url-pattern>
+	</servlet-mapping>
+
+</web-app>
