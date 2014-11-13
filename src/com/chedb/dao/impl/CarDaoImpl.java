@@ -16,7 +16,7 @@ import com.forum.model.ModelCarBrand;
 import com.forum.model.ModelCarSerise;
 
 //
-@Repository("buynoteDaoImpl")
+@Repository("carDaoImpl")
 public class CarDaoImpl implements CarDao {
 	@Resource(name = "jdbcTemplate")
 	private JdbcTemplate jdbcTemplate;

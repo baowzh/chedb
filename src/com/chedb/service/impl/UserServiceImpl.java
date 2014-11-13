@@ -10,7 +10,7 @@ import com.forum.model.ModelCar;
 import com.forum.model.ModelUser;
 @Service("userServiceimpl")
 @Transactional
-public class UserServiceimpl implements UserService {
+public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean delete(int id) throws Exception {

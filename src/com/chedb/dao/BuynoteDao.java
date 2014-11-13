@@ -22,4 +22,7 @@ public interface BuynoteDao {
 
 	public ModelBusinote getBusinoteById(String no) throws Exception;
 
+	public List<ModelBusinote> getBuynoteListByProviderId(String providerId,
+			int page) throws Exception;
+
 }

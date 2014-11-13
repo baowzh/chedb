@@ -229,5 +229,6 @@ public class BuynoteDaoImpl implements BuynoteDao {
 		});
 
 	}
+	
 
 }

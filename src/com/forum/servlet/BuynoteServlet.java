@@ -9,10 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.forum.daoimpl.BuynoteDaoImpl;
-import com.forum.daoimpl.ProviderDaoImpl;
-import com.forum.daoimpl.ProviderItemDaoImpl;
 import com.forum.model.ModelBusinote;
-import com.forum.model.ModelServiceClass;
 import com.forum.util.GsonUtil;
 import com.google.gson.reflect.TypeToken;
 
