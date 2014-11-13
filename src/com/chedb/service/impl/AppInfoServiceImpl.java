@@ -35,14 +35,14 @@ public class AppInfoServiceImpl implements AppInfoService {
 	public boolean commitComplain(String type, String strSingleTitleList,
 			String userId, String text) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return this.appinfoDao.userCommit("complain", strSingleTitleList, text, userId);
 	}
 
 	@Override
 	public boolean commitFreeback(String type, String strSingleTitleList,
 			String userId, String text) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return this.appinfoDao.userCommit("freeback", strSingleTitleList, text, userId);
 	}
 
 }
