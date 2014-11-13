@@ -55,24 +55,6 @@ public class ServiceClassDaoImpl implements ServiceClassDao {
 
 				});
 
-		/*
-		 * conn = DaoUtil.getConnection(); if (conn == null) { return null; }
-		 * stat = DaoUtil.getStatement(conn); ModelServiceClass item = null; try
-		 * { ResultSet rs = stat.executeQuery(sql); while (rs.next()){ item =
-		 * new ModelServiceClass(); item.setClassId(rs.getString("class_id"));
-		 * 
-		 * item.setClassName(rs.getString("class_name"));//
-		 * 
-		 * item.setBusinessNum(rs.getInt("business_num"));
-		 * 
-		 * item.setWorkdocPath(rs.getString("workdoc_path"));//
-		 * 
-		 * item.setNeedCar(rs.getInt("need_car"));//
-		 * 
-		 * item.setRemark(rs.getString("remark")); } conn.close(); stat.close();
-		 * } catch (SQLException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); } return item;
-		 */
 	}
 
 }

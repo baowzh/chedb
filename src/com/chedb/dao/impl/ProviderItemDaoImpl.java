@@ -30,79 +30,30 @@ public class ProviderItemDaoImpl implements ProviderItemDao {
 				+ item.getProviderId()
 				+ "' and sys_item_id='"
 				+ item.getSysItemId() + "'";
-		
-			String nowMaxId = null;
-			nowMaxId=this.jdbcTemplate.queryForObject(maxItemIdSql, java.lang.String.class);
-			if (nowMaxId != null) {
-				maxItemId = (Long.parseLong(nowMaxId) + 1) + "";
-			}
-			maxSort=this.jdbcTemplate.queryForObject(maxSortSql, java.lang.Integer.class);
-			String insertSql = "insert into provider_item (id, title, sys_item_id, sys_item_name, provider_id,status,sort) "
-					+ "values('"
-					+ maxItemId
-					+ "','"
-					+ item.getTitle()
-					+ "','"
-					+ item.getSysItemId()
-					+ "','"
-					+ item.getSysItemName()
-					+ "','" + item.getProviderId() + "',1," + maxSort + ")";
-			this.jdbcTemplate.execute(insertSql);
-			item.setItemId(maxItemId);
+
+		String nowMaxId = null;
+		nowMaxId = this.jdbcTemplate.queryForObject(maxItemIdSql,
+				java.lang.String.class);
+		if (nowMaxId != null) {
+			maxItemId = (Long.parseLong(nowMaxId) + 1) + "";
+		}
+		maxSort = this.jdbcTemplate.queryForObject(maxSortSql,
+				java.lang.Integer.class);
+		String insertSql = "insert into provider_item (id, title, sys_item_id, sys_item_name, provider_id,status,sort) "
+				+ "values('"
+				+ maxItemId
+				+ "','"
+				+ item.getTitle()
+				+ "','"
+				+ item.getSysItemId()
+				+ "','"
+				+ item.getSysItemName()
+				+ "','"
+				+ item.getProviderId() + "',1," + maxSort + ")";
+		this.jdbcTemplate.execute(insertSql);
+		item.setItemId(maxItemId);
 		return true;
-		/*
-		conn = DaoUtil.getConnection();
-		if (conn == null) {
-			return false;
-		}
-		stat = DaoUtil.getStatement(conn);
-		int maxSort = 1;
-		String maxSortSql = "select max(sort) as maxsort from provider_item where provider_id='"
-				+ item.getProviderId() + "'";
-		String maxItemId = item.getProviderId() + item.getSysItemId() + "001";
-		String maxItemIdSql = "select max(id) as maxid from provider_item where provider_id='"
-				+ item.getProviderId()
-				+ "' and sys_item_id='"
-				+ item.getSysItemId() + "'";
 
-		try {
-			String nowMaxId = null;
-			ResultSet rs = stat.executeQuery(maxItemIdSql);
-			while (rs.next()) {
-				nowMaxId = rs.getString("maxid");
-				break;
-			}
-			if (nowMaxId != null) {
-				maxItemId = (Long.parseLong(nowMaxId) + 1) + "";
-			}
-
-			ResultSet rsSort = stat.executeQuery(maxSortSql);
-			while (rsSort.next()) {
-				maxSort = rsSort.getInt("maxsort") + 1;
-				break;
-			}
-
-			String insertSql = "insert into provider_item (id, title, sys_item_id, sys_item_name, provider_id,status,sort) "
-					+ "values('"
-					+ maxItemId
-					+ "','"
-					+ item.getTitle()
-					+ "','"
-					+ item.getSysItemId()
-					+ "','"
-					+ item.getSysItemName()
-					+ "','" + item.getProviderId() + "',1," + maxSort + ")";
-			stat.executeUpdate(insertSql);
-
-			item.setItemId(maxItemId);
-			conn.close();
-			stat.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		}
-		return true;*/
 	}
 
 	public boolean delete(String itemId) {
@@ -111,14 +62,7 @@ public class ProviderItemDaoImpl implements ProviderItemDao {
 				+ itemId + "'");
 
 		return true;
-		/*
-		 * conn = DaoUtil.getConnection(); if (conn == null) { return false; }
-		 * stat = DaoUtil.getStatement(conn); try {
-		 * stat.executeUpdate("delete from provider_item  where id='" + itemId
-		 * +"'"); conn.close(); stat.close(); } catch (SQLException e) { // TODO
-		 * Auto-generated catch block e.printStackTrace(); return false; }
-		 * return true;
-		 */
+
 	}
 
 	public boolean update(String itemId, String type, String content) {
@@ -137,19 +81,7 @@ public class ProviderItemDaoImpl implements ProviderItemDao {
 				+ " where id=" + itemId);
 
 		return true;
-		/*
-		 * conn = DaoUtil.getConnection(); stat = DaoUtil.getStatement(conn);
-		 * String updateStr = ""; if (Integer.parseInt(type) ==
-		 * ServerConfig.OperType_EditProviderItemTitle) updateStr = "title='" +
-		 * content + "'"; else if (Integer.parseInt(type) ==
-		 * ServerConfig.OperType_EditProviderItemSummary) updateStr =
-		 * "summary='" + content + "'"; else if (Integer.parseInt(type) ==
-		 * ServerConfig.OperType_EditProviderItemRemark) updateStr = "remark='"
-		 * + content + "'"; else return false; try {
-		 * stat.executeUpdate("update provider_item set " + updateStr +
-		 * " where id=" + itemId); conn.close(); stat.close(); } catch
-		 * (SQLException e) { e.printStackTrace(); return false; } return true;
-		 */
+
 	}
 
 	public boolean updatePrice(String itemId, String price, String priceOld) {
@@ -166,20 +98,6 @@ public class ProviderItemDaoImpl implements ProviderItemDao {
 
 		return true;
 
-		/*
-		 * conn = DaoUtil.getConnection(); if (conn == null) { return false; }
-		 * stat = DaoUtil.getStatement(conn);
-		 * 
-		 * String updateStr = ""; if (Double.parseDouble(priceOld) > 0) {
-		 * updateStr = "update provider_item set price=" + price +
-		 * ", price_old=" + priceOld + " where id=" + itemId; } else { updateStr
-		 * = "update provider_item set price=" + price + " where id=" + itemId;
-		 * }
-		 * 
-		 * try { stat.executeUpdate(updateStr); conn.close(); stat.close(); }
-		 * catch (SQLException e) { e.printStackTrace(); return false; } return
-		 * true;
-		 */
 	}
 
 	public boolean appendBusinessCount(String itemId) {
@@ -222,101 +140,9 @@ public class ProviderItemDaoImpl implements ProviderItemDao {
 		this.jdbcTemplate.execute("update provider_item set sort=" + nItemSort
 				+ " where id=" + targetItemId);
 		return true;
-		/*
-		 * conn = DaoUtil.getConnection(); if (conn == null) { return false; }
-		 * stat = DaoUtil.getStatement(conn);
-		 * 
-		 * int nItemSort = -1; String itemSort =
-		 * "select sort from provider_item where id='" + itemId + "'";
-		 * 
-		 * int nItemTargetSort = -1; String itemTargetSort =
-		 * "select sort from provider_item where id='" + targetItemId + "'"; try
-		 * { ResultSet rs = stat.executeQuery(itemSort); while (rs.next()) {
-		 * nItemSort = rs.getInt("sort"); } if (nItemSort < 0) { return false; }
-		 * ResultSet rsTarget = stat.executeQuery(itemTargetSort); while
-		 * (rsTarget.next()) { nItemTargetSort = rsTarget.getInt("sort"); } if
-		 * (nItemTargetSort < 0) { return false; }
-		 * 
-		 * stat.executeUpdate("update provider_item set sort=" + nItemTargetSort
-		 * + " where id=" + itemId);
-		 * 
-		 * stat.executeUpdate("update provider_item set sort=" + nItemSort +
-		 * " where id=" + targetItemId); conn.close(); stat.close(); } catch
-		 * (SQLException e) { e.printStackTrace(); return false; } return true;
-		 */
+
 	}
 
-	//
-	// public List<User> getAll() {
-	// conn = DaoUtil.getConnection();
-	// stat = DaoUtil.getStatement(conn);
-	// ArrayList<User> list = new ArrayList<User>();
-	// try {
-	// ResultSet rs = stat.executeQuery("select * from user");
-	// while (rs.next()){
-	// User temp = new User();
-	// temp.setId(rs.getInt(1));
-	// temp.setUserName(rs.getString(2));
-	// temp.setPassword(rs.getString(3));
-	// temp.setTrueName(rs.getString(4));
-	// list.add(temp);
-	// }
-	// } catch (SQLException e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	// return list;
-	// }
-
-	/**
-	 * 
-	 * @param providerId
-	 * @return
-	 */
-	// public ProviderModel queryProviderById(String providerId){
-	// String sql = "select * from provider where id = '" + providerId + "'";
-	//
-	// List<ProviderModel> list = getProviderListBySql(sql);
-	// if (list == null || list.size()==0) {
-	// return null;
-	// }
-	// return list.get(0);
-	// }
-
-	/**
-	 * 
-	 * @param userId
-	 * @return
-	 */
-	// public ProviderModel getProviderByUserId(String userId){
-	// String sql = "select * from provider where id = '" + userId + "'";
-	//
-	// List<ProviderModel> list = getProviderListBySql(sql);
-	// if (list == null || list.size()==0) {
-	// return null;
-	// }
-	// return list.get(0);
-	// }
-	/**
-	 * 查询系统项目类别
-	 * 
-	 * @param level
-	 *            1为修理厂，2为配件商
-	 * @return
-	 */
-	// public List<ProviderModel> getProviderListBySearch(String strSearch){
-	// String sql = "";
-	// boolean mat = strSearch.matches("\\d+");//返回true为纯数字,否则就不是纯数字
-	// if (mat) {
-	// sql = "select * from provider where id like '%" + strSearch +
-	// "%' limit 100";
-	// } else {
-	// sql = "select * from provider where title like '%" + strSearch +
-	// "%' limit 100";
-	//
-	// }
-	// return getProviderListBySql(sql);
-	// }
 	/**
 	 * mode : 0表示查询符合条件的全部，1表示查询前面多少条，2表示查询后面所有数据
 	 */
@@ -354,10 +180,6 @@ public class ProviderItemDaoImpl implements ProviderItemDao {
 			String sysItemId) {
 		List<ModelSysItem> list = new ArrayList<ModelSysItem>();
 
-		// List<String> labellist = new ArrayList<String>();
-		// // ModelSysItem item = new ModelSysItem();
-		// // item.setLabelId(sysItemId);
-		// labellist.add(sysItemId);
 		List<ModelProviderItem> itemlist = getProviderItemByProviderId(0,
 				providerId, sysItemId, null, null);
 		if (itemlist == null) {
@@ -416,48 +238,11 @@ public class ProviderItemDaoImpl implements ProviderItemDao {
 			}
 
 		});
-		/*
-		 * conn = DaoUtil.getConnection(); if (conn == null) { return null; }
-		 * stat = DaoUtil.getStatement(conn); ArrayList<ModelProviderItem> list
-		 * = new ArrayList<ModelProviderItem>(); try { ResultSet rs =
-		 * stat.executeQuery(sql); while (rs.next()) { ModelProviderItem item =
-		 * new ModelProviderItem();
-		 * 
-		 * item.setItemId(rs.getString("id"));
-		 * item.setProviderId(rs.getString("provider_id"));
-		 * item.setSysItemId(rs.getString("sys_item_id"));
-		 * item.setSysItemName(rs.getString("sys_item_name"));
-		 * item.setTitle(rs.getString("title"));
-		 * item.setSummary(rs.getString("summary"));
-		 * item.setRemark(rs.getString("remark"));
-		 * item.setPrice(rs.getFloat("price"));
-		 * item.setPriceOld(rs.getFloat("price_old"));
-		 * 
-		 * item.setBusiness(rs.getInt("business_count")); //
-		 * item.setScore(rs.getFloat("score")); //
-		 * item.setScoreCount(rs.getInt("score_count")); //
-		 * item.setAddr(rs.getString("addr")); //
-		 * item.setLatitude(rs.getDouble("latitude")); //
-		 * item.setLongitude(rs.getDouble("longitude")); //
-		 * item.setPhone(rs.getString("phone")); //
-		 * item.setRenzheng(rs.getInt("renzheng")); //
-		 * item.setS4(rs.getInt("s4")); //
-		 * item.setLiansuo(rs.getInt("liansuo"));
-		 * 
-		 * list.add(item); } conn.close(); stat.close(); } catch (SQLException
-		 * e) { // TODO Auto-generated catch block e.printStackTrace(); } return
-		 * list;
-		 */
+
 	}
 
 	private boolean executeUpdate(String updateStr) {
 		this.jdbcTemplate.execute(updateStr);
 		return true;
-		/*
-		 * conn = DaoUtil.getConnection(); if (conn == null) { return false; }
-		 * stat = DaoUtil.getStatement(conn); try {
-		 * stat.executeUpdate(updateStr); conn.close(); stat.close(); } catch
-		 * (SQLException e) { e.printStackTrace(); return false; } return true;
-		 */
 	}
 }

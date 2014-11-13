@@ -27,11 +27,7 @@ public class AppinfoDaoImpl implements AppinfoDao {
 		if (maxid != null) {
 			nowMaxId = maxid + 1;
 		}
-		// ResultSet rs = stat.executeQuery(maxIdSql);
-		// while (rs.next()) {
-		// nowMaxId = rs.getLong("maxid") + 1;
-		// break;
-		// }
+
 		String sql = "insert into user_commit (id,type,content_list,text,user_id,commit_time) values('"
 				+ nowMaxId
 				+ "','"
@@ -55,25 +51,7 @@ public class AppinfoDaoImpl implements AppinfoDao {
 	public String getAppinfoContentById(String id) {
 		String sql = "select * from app_topic where id='" + id + "'";
 		return this.jdbcTemplate.queryForObject(sql, java.lang.String.class);
-		// conn = DaoUtil.getConnection();
-		// if (conn == null) {
-		// return null;
-		// }
-		// stat = DaoUtil.getStatement(conn);
-		// String content = null;
-		// try {
-		// ResultSet rs = stat.executeQuery(sql);
-		// while (rs.next()) {
-		// content = rs.getString("content");
-		// }
-		// conn.close();
-		// stat.close();
-		// } catch (SQLException e) {
-		// TODO Auto-generated catch block
-		// e.printStackTrace();
-		// return null;
-		// }
-		// return content;
+		
 	}
 
 	public List<ModelPublicItem> getAppinfoListByType(String type) {
@@ -97,30 +75,7 @@ public class AppinfoDaoImpl implements AppinfoDao {
 			}
 
 		});
-		// conn = DaoUtil.getConnection();
-		// if (conn == null) {
-		// return null;
-		// }
-		// stat = DaoUtil.getStatement(conn);
-		// ArrayList<ModelPublicItem> list = new ArrayList<ModelPublicItem>();
-		// try {
-		// ResultSet rs = stat.executeQuery(sql);
-		// while (rs.next()) {
-		// ModelPublicItem item = new ModelPublicItem();
-		//
-		// item.setId(rs.getString("id"));
-		// item.setTitle(rs.getString("name"));
-		//
-		// list.add(item);
-		// }
-		// conn.close();
-		// stat.close();
-		// } catch (SQLException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// return null;
-		// }
-		// return list;
+		
 	}
 
 }

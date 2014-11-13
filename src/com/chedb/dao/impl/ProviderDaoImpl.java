@@ -20,19 +20,10 @@ public class ProviderDaoImpl {
 	@Resource(name = "jdbcTemplate")
 	private JdbcTemplate jdbcTemplate;
 
-	// private Connection conn;
-	// private Statement stat;
 	public boolean delete(int id) throws Exception {
 		this.jdbcTemplate.execute("delete from user where id=" + id);
 		return true;
 
-		/*
-		 * conn = DaoUtil.getConnection(); stat = DaoUtil.getStatement(conn);
-		 * try { stat.executeUpdate("delete from user where id="+id);
-		 * conn.close(); stat.close(); } catch (SQLException e) { // TODO
-		 * Auto-generated catch block e.printStackTrace(); return false; }
-		 * return true;
-		 */
 	}
 
 	public boolean add(ModelProvider t) {
@@ -42,23 +33,8 @@ public class ProviderDaoImpl {
 						+ t.getProviderId() + "',1,'" + t.getTitle() + "',1"
 						+ ")");
 
-		// System.out.println("------好好好------:"
-		// + "insert into provider(id,level,title,status) values('"
-		// + t.getProviderId() + "',1,'" + t.getTitle() + "',1" + ")");
 		return true;
 
-		/*
-		 * conn = DaoUtil.getConnection(); if (conn == null) { return false; }
-		 * stat = DaoUtil.getStatement(conn); try {
-		 * stat.executeUpdate("insert into provider(id,level,title,status) values('"
-		 * + t.getProviderId() + "',1,'" + t.getTitle() + "',1" + ")");
-		 * 
-		 * System.out.println("------好好好------:" +
-		 * "insert into provider(id,level,title,status) values('" +
-		 * t.getProviderId() + "',1,'" + t.getTitle() + "',1" + ")");
-		 * conn.close(); stat.close(); } catch (SQLException e) {
-		 * e.printStackTrace(); return false; } return true;
-		 */
 	}
 
 	public boolean updateScore(String providerId, String score) {
@@ -90,24 +66,6 @@ public class ProviderDaoImpl {
 				+ " where id='" + providerId + "'");
 		return true;
 
-		/*
-		 * conn = DaoUtil.getConnection(); if (conn == null) { return false; }
-		 * stat = DaoUtil.getStatement(conn); try { int score_total = 0; int
-		 * score_count = 0; ResultSet rs = stat
-		 * .executeQuery("select score_total,score_count from provider where id='"
-		 * + providerId + "'"); while (rs.next()) { score_total =
-		 * rs.getInt("score_total"); score_count = rs.getInt("score_count"); }
-		 * score_total += Integer.parseInt(score); score_count++; float srore =
-		 * (score_total) / ((float) score_count); BigDecimal b = new
-		 * BigDecimal(srore); srore = b.setScale(1,
-		 * BigDecimal.ROUND_HALF_UP).floatValue();
-		 * stat.executeUpdate("update provider set score=" + srore +
-		 * ",score_total=" + score_total + ",score_count=" + score_count +
-		 * " where id='" + providerId + "'");
-		 * 
-		 * conn.close(); stat.close(); } catch (SQLException e) {
-		 * e.printStackTrace(); return false; } return true;
-		 */
 	}
 
 	public boolean update(String providerId, String type, String content) {
@@ -139,29 +97,6 @@ public class ProviderDaoImpl {
 				+ " where id=" + providerId);
 		return true;
 
-		/*
-		 * conn = DaoUtil.getConnection(); if (conn == null) { return false; }
-		 * stat = DaoUtil.getStatement(conn);
-		 * 
-		 * String updateStr = ""; if (Integer.parseInt(type) ==
-		 * ServerConfig.OperType_EditProviderTitle) updateStr = "title='" +
-		 * content + "'"; else if (Integer.parseInt(type) ==
-		 * ServerConfig.OperType_EditProviderSummary) updateStr = "summary='" +
-		 * content + "'"; else if (Integer.parseInt(type) ==
-		 * ServerConfig.OperType_EditProviderRemark) updateStr = "remark='" +
-		 * content + "'"; else if (Integer.parseInt(type) ==
-		 * ServerConfig.OperType_EditProviderAddr) { int pos =
-		 * content.lastIndexOf("|"); String x = "", y = ""; if (pos > 0) { int
-		 * xpos = content.lastIndexOf("-"); x = content.substring(pos + 1,
-		 * xpos); y = content.substring(xpos + 1); updateStr = "addr='" +
-		 * content.substring(0, pos) + "',latitude=" + x + ",longitude=" + y; }
-		 * else { updateStr = "addr='" + content + "'"; } } else if
-		 * (Integer.parseInt(type) == ServerConfig.OperType_EditProviderPhone)
-		 * updateStr = "phone='" + content + "'"; else return false; try {
-		 * stat.executeUpdate("update provider set " + updateStr + " where id="
-		 * + providerId); conn.close(); stat.close(); } catch (SQLException e) {
-		 * e.printStackTrace(); return false; } return true;
-		 */
 	}
 
 	public boolean appendBusinessCount(String providerId) {
@@ -188,17 +123,6 @@ public class ProviderDaoImpl {
 		return getProvider(sql);
 	}
 
-	//
-	// /**
-	// *
-	// * @param userId
-	// * @return
-	// */
-	// public ModelProvider getProviderByUserId(String userId){
-	// String sql = "select * from provider where id = '" + userId + "'";
-	//
-	// return getProvider(sql);
-	// }
 	/**
 	 * 查询系统项目类别
 	 * 
@@ -246,26 +170,6 @@ public class ProviderDaoImpl {
 				+ "' where id='" + providerId + "'");
 		return nowid + "";
 
-		/*
-		 * conn = DaoUtil.getConnection(); if (conn == null) { return null; }
-		 * stat = DaoUtil.getStatement(conn);
-		 * 
-		 * String selStr = "1"; int nowid = 1;
-		 * 
-		 * try { String imgidList = ""; ResultSet rs = stat
-		 * .executeQuery("select imgid_list from provider where id='" +
-		 * providerId + "'"); while (rs.next()) { imgidList =
-		 * rs.getString("imgid_list"); } if (imgidList != null &&
-		 * imgidList.length() > 0) { String idlist[] = imgidList.split(","); if
-		 * (idlist != null && idlist.length > 0) { for (int i = 0; i <
-		 * idlist.length; i++) { int id = Integer.parseInt(idlist[i]); if (nowid
-		 * < id) { nowid = id; } } } nowid++; selStr = imgidList + "," + nowid;
-		 * } else { selStr = nowid + ""; }
-		 * stat.executeUpdate("update provider set imgid_list='" + selStr +
-		 * "' where id='" + providerId + "'"); conn.close(); stat.close(); }
-		 * catch (SQLException e) { e.printStackTrace(); return null; } return
-		 * nowid + "";
-		 */
 	}
 
 	/**
@@ -333,32 +237,6 @@ public class ProviderDaoImpl {
 				+ newImgIdList + "' where id='" + providerId + "'");
 		return newImgIdList;
 
-		/*
-		 * conn = DaoUtil.getConnection(); if (conn == null) { return null; }
-		 * stat = DaoUtil.getStatement(conn);
-		 * 
-		 * String newImgIdList = "";
-		 * 
-		 * String ids[] = oldImgIdList.split(","); if (ids != null && ids.length
-		 * > 0) { int index = 0; for (int i = 0; i < ids.length; i++) { if
-		 * (ids[i].equals(imgId)) { index = i; break; } } if
-		 * (edittype.equals("1")) { for (int i = 0; i < index; i++) {
-		 * newImgIdList += ids[i] + ","; } if (ids.length > index + 1) {
-		 * newImgIdList += ids[index + 1] + ","; } newImgIdList += ids[index] +
-		 * ","; for (int i = index + 2; i < ids.length; i++) { newImgIdList +=
-		 * ids[i] + ","; } } else if (edittype.equals("0")) { for (int i = 0; i
-		 * < index; i++) { newImgIdList += ids[i] + ","; } for (int i = index +
-		 * 1; i < ids.length; i++) { newImgIdList += ids[i] + ","; } } else if
-		 * (edittype.equals("-1")) { for (int i = 0; i < index - 1; i++) {
-		 * newImgIdList += ids[i] + ","; } newImgIdList += ids[index] + ","; if
-		 * (index > 0) { newImgIdList += ids[index - 1] + ","; } for (int i =
-		 * index + 1; i < ids.length; i++) { newImgIdList += ids[i] + ","; } } }
-		 * // 1,3,5,4 // 0,1,2,3 if (newImgIdList.length() > 0) { newImgIdList =
-		 * newImgIdList.substring(0, newImgIdList.length() - 1); } try {
-		 * stat.executeUpdate("update provider set imgid_list='" + newImgIdList
-		 * + "' where id='" + providerId + "'"); } catch (SQLException e) {
-		 * e.printStackTrace(); return null; } return newImgIdList;
-		 */
 	}
 
 	// 根据位置排序
@@ -428,15 +306,7 @@ public class ProviderDaoImpl {
 				+ " where provider.status=1 and provider.level="
 				+ level
 				+ " and provider_item.status=1 ";
-		// if (strSysItemList!=null && strSysItemList.length()>0) {
-		// sql += " and sys_item_id in ("+strSysItemList+") ";
-		// if (priceStart != null && priceStart.length()>0) {
-		// sql += " and price>="+priceStart;
-		// }
-		// if (priceEnd != null && priceEnd.length()>0) {
-		// sql += " and price<="+priceEnd;
-		// }
-		// }
+
 		boolean sysItemListOk = strSysItemList != null
 				&& strSysItemList.length() > 0;
 		boolean priceStartOk = priceStart != null && priceStart.length() > 0;
@@ -521,30 +391,6 @@ public class ProviderDaoImpl {
 			}
 
 		});
-		/*
-		 * ResultSet rs = stat.executeQuery(sql); while (rs.next()) {
-		 * ModelProvider item = new ModelProvider();
-		 * 
-		 * item.setProviderId(rs.getString("id"));
-		 * 
-		 * item.setTitle(rs.getString("title"));// //
-		 * item.setSummary(rs.getString("summary")); //
-		 * item.setRemark(rs.getString("remark"));
-		 * item.setBrowse(rs.getInt("browse"));
-		 * item.setBusiness(rs.getInt("business"));
-		 * item.setScore(rs.getFloat("score"));//
-		 * item.setScoreCount(rs.getInt("score_count"));//
-		 * item.setAddr(rs.getString("addr"));//
-		 * item.setLatitude(rs.getDouble("latitude"));//
-		 * item.setLongitude(rs.getDouble("longitude"));// //
-		 * item.setPhone(rs.getString("phone")); //
-		 * item.setRenzheng(rs.getInt("renzheng"));// //
-		 * item.setS4(rs.getInt("s4"));// //
-		 * item.setLiansuo(rs.getInt("liansuo"));// //
-		 * item.setImgidList(rs.getString("imgid_list"));
-		 * 
-		 * list.add(item); } conn.close(); stat.close();
-		 */
 		return list;
 	}
 
@@ -578,30 +424,6 @@ public class ProviderDaoImpl {
 					}
 				});
 
-		/*
-		 * conn = DaoUtil.getConnection(); if (conn == null) { return null; }
-		 * stat = DaoUtil.getStatement(conn); ModelProvider item = null; try {
-		 * ResultSet rs = stat.executeQuery(sql); while (rs.next()) { item = new
-		 * ModelProvider(); item.setProviderId(rs.getString("id"));
-		 * 
-		 * item.setTitle(rs.getString("title"));//
-		 * item.setSummary(rs.getString("summary"));
-		 * item.setRemark(rs.getString("remark"));
-		 * item.setBrowse(rs.getInt("browse"));
-		 * item.setBusiness(rs.getInt("business"));
-		 * item.setScore(rs.getFloat("score"));//
-		 * item.setScoreCount(rs.getInt("score_count"));//
-		 * item.setAddr(rs.getString("addr"));//
-		 * item.setLatitude(rs.getDouble("latitude"));//
-		 * item.setLongitude(rs.getDouble("longitude"));//
-		 * item.setPhone(rs.getString("phone"));
-		 * item.setRenzheng(rs.getInt("renzheng"));//
-		 * item.setS4(rs.getInt("s4"));//
-		 * item.setLiansuo(rs.getInt("liansuo"));//
-		 * item.setImgIdListStr(rs.getString("imgid_list")); } conn.close();
-		 * stat.close(); } catch (SQLException e) { // TODO Auto-generated catch
-		 * block e.printStackTrace(); } return item;
-		 */
 	}
 
 }
