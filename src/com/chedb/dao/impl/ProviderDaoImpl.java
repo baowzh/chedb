@@ -13,7 +13,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.forum.model.ModelProvider;
-import com.forum.util.DaoUtil;
 import com.forum.util.ServerConfig;
 
 @Repository("providerDaoImpl")
@@ -494,76 +493,16 @@ public class ProviderDaoImpl {
 
 	private List<ModelProvider> getProviderListBySql(String sql) {
 		List<ModelProvider> list = new ArrayList<ModelProvider>();
-			list = this.jdbcTemplate.query(sql, new RowMapper<ModelProvider>() {
+		list = this.jdbcTemplate.query(sql, new RowMapper<ModelProvider>() {
 
-				@Override
-				public ModelProvider mapRow(ResultSet rs, int arg1)
-						throws SQLException {
-					// TODO Auto-generated method stub
-					 ModelProvider item = new ModelProvider();
-					  item.setProviderId(rs.getString("id"));
-					  item.setTitle(rs.getString("title"));// //
-					  item.setSummary(rs.getString("summary")); //
-					  item.setRemark(rs.getString("remark"));
-					  item.setBrowse(rs.getInt("browse"));
-					  item.setBusiness(rs.getInt("business"));
-					  item.setScore(rs.getFloat("score"));//
-					  item.setScoreCount(rs.getInt("score_count"));//
-					  item.setAddr(rs.getString("addr"));//
-					  item.setLatitude(rs.getDouble("latitude"));//
-					  item.setLongitude(rs.getDouble("longitude"));// //
-					  item.setPhone(rs.getString("phone")); //
-					  item.setRenzheng(rs.getInt("renzheng"));// //
-					  item.setS4(rs.getInt("s4"));// //
-					  item.setLiansuo(rs.getInt("liansuo"));// //
-					  item.setImgIdListStr(rs.getString("imgid_list"));
-					  
-					return item;
-					  }
-
-			});
-			/*
-			 * ResultSet rs = stat.executeQuery(sql); while (rs.next()) {
-			 * ModelProvider item = new ModelProvider();
-			 * 
-			 * item.setProviderId(rs.getString("id"));
-			 * 
-			 * item.setTitle(rs.getString("title"));// //
-			 * item.setSummary(rs.getString("summary")); //
-			 * item.setRemark(rs.getString("remark"));
-			 * item.setBrowse(rs.getInt("browse"));
-			 * item.setBusiness(rs.getInt("business"));
-			 * item.setScore(rs.getFloat("score"));//
-			 * item.setScoreCount(rs.getInt("score_count"));//
-			 * item.setAddr(rs.getString("addr"));//
-			 * item.setLatitude(rs.getDouble("latitude"));//
-			 * item.setLongitude(rs.getDouble("longitude"));// //
-			 * item.setPhone(rs.getString("phone")); //
-			 * item.setRenzheng(rs.getInt("renzheng"));// //
-			 * item.setS4(rs.getInt("s4"));// //
-			 * item.setLiansuo(rs.getInt("liansuo"));// //
-			 * item.setImgidList(rs.getString("imgid_list"));
-			 * 
-			 * list.add(item); } conn.close(); stat.close();
-			 */
-		return list;
-	}
-
-	private ModelProvider getProvider(String sql) {
-		conn = DaoUtil.getConnection();
-		if (conn == null) {
-			return null;
-		}
-		stat = DaoUtil.getStatement(conn);
-		ModelProvider item = null;
-		try {
-			ResultSet rs = stat.executeQuery(sql);
-			while (rs.next()) {
-				item = new ModelProvider();
+			@Override
+			public ModelProvider mapRow(ResultSet rs, int arg1)
+					throws SQLException {
+				// TODO Auto-generated method stub
+				ModelProvider item = new ModelProvider();
 				item.setProviderId(rs.getString("id"));
-
-				item.setTitle(rs.getString("title"));//
-				item.setSummary(rs.getString("summary"));
+				item.setTitle(rs.getString("title"));// //
+				item.setSummary(rs.getString("summary")); //
 				item.setRemark(rs.getString("remark"));
 				item.setBrowse(rs.getInt("browse"));
 				item.setBusiness(rs.getInt("business"));
@@ -571,20 +510,98 @@ public class ProviderDaoImpl {
 				item.setScoreCount(rs.getInt("score_count"));//
 				item.setAddr(rs.getString("addr"));//
 				item.setLatitude(rs.getDouble("latitude"));//
-				item.setLongitude(rs.getDouble("longitude"));//
-				item.setPhone(rs.getString("phone"));
-				item.setRenzheng(rs.getInt("renzheng"));//
-				item.setS4(rs.getInt("s4"));//
-				item.setLiansuo(rs.getInt("liansuo"));//
+				item.setLongitude(rs.getDouble("longitude"));// //
+				item.setPhone(rs.getString("phone")); //
+				item.setRenzheng(rs.getInt("renzheng"));// //
+				item.setS4(rs.getInt("s4"));// //
+				item.setLiansuo(rs.getInt("liansuo"));// //
 				item.setImgIdListStr(rs.getString("imgid_list"));
+
+				return item;
 			}
-			conn.close();
-			stat.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return item;
+
+		});
+		/*
+		 * ResultSet rs = stat.executeQuery(sql); while (rs.next()) {
+		 * ModelProvider item = new ModelProvider();
+		 * 
+		 * item.setProviderId(rs.getString("id"));
+		 * 
+		 * item.setTitle(rs.getString("title"));// //
+		 * item.setSummary(rs.getString("summary")); //
+		 * item.setRemark(rs.getString("remark"));
+		 * item.setBrowse(rs.getInt("browse"));
+		 * item.setBusiness(rs.getInt("business"));
+		 * item.setScore(rs.getFloat("score"));//
+		 * item.setScoreCount(rs.getInt("score_count"));//
+		 * item.setAddr(rs.getString("addr"));//
+		 * item.setLatitude(rs.getDouble("latitude"));//
+		 * item.setLongitude(rs.getDouble("longitude"));// //
+		 * item.setPhone(rs.getString("phone")); //
+		 * item.setRenzheng(rs.getInt("renzheng"));// //
+		 * item.setS4(rs.getInt("s4"));// //
+		 * item.setLiansuo(rs.getInt("liansuo"));// //
+		 * item.setImgidList(rs.getString("imgid_list"));
+		 * 
+		 * list.add(item); } conn.close(); stat.close();
+		 */
+		return list;
+	}
+
+	private ModelProvider getProvider(String sql) {
+		return this.jdbcTemplate.queryForObject(sql,
+				new RowMapper<ModelProvider>() {
+
+					@Override
+					public ModelProvider mapRow(ResultSet rs, int arg1)
+							throws SQLException {
+						// TODO Auto-generated method stub
+						ModelProvider item = new ModelProvider();
+						item.setProviderId(rs.getString("id"));
+
+						item.setTitle(rs.getString("title"));//
+						item.setSummary(rs.getString("summary"));
+						item.setRemark(rs.getString("remark"));
+						item.setBrowse(rs.getInt("browse"));
+						item.setBusiness(rs.getInt("business"));
+						item.setScore(rs.getFloat("score"));//
+						item.setScoreCount(rs.getInt("score_count"));//
+						item.setAddr(rs.getString("addr"));//
+						item.setLatitude(rs.getDouble("latitude"));//
+						item.setLongitude(rs.getDouble("longitude"));//
+						item.setPhone(rs.getString("phone"));
+						item.setRenzheng(rs.getInt("renzheng"));//
+						item.setS4(rs.getInt("s4"));//
+						item.setLiansuo(rs.getInt("liansuo"));//
+						item.setImgIdListStr(rs.getString("imgid_list"));
+						return item;
+					}
+				});
+
+		/*
+		 * conn = DaoUtil.getConnection(); if (conn == null) { return null; }
+		 * stat = DaoUtil.getStatement(conn); ModelProvider item = null; try {
+		 * ResultSet rs = stat.executeQuery(sql); while (rs.next()) { item = new
+		 * ModelProvider(); item.setProviderId(rs.getString("id"));
+		 * 
+		 * item.setTitle(rs.getString("title"));//
+		 * item.setSummary(rs.getString("summary"));
+		 * item.setRemark(rs.getString("remark"));
+		 * item.setBrowse(rs.getInt("browse"));
+		 * item.setBusiness(rs.getInt("business"));
+		 * item.setScore(rs.getFloat("score"));//
+		 * item.setScoreCount(rs.getInt("score_count"));//
+		 * item.setAddr(rs.getString("addr"));//
+		 * item.setLatitude(rs.getDouble("latitude"));//
+		 * item.setLongitude(rs.getDouble("longitude"));//
+		 * item.setPhone(rs.getString("phone"));
+		 * item.setRenzheng(rs.getInt("renzheng"));//
+		 * item.setS4(rs.getInt("s4"));//
+		 * item.setLiansuo(rs.getInt("liansuo"));//
+		 * item.setImgIdListStr(rs.getString("imgid_list")); } conn.close();
+		 * stat.close(); } catch (SQLException e) { // TODO Auto-generated catch
+		 * block e.printStackTrace(); } return item;
+		 */
 	}
 
 }
