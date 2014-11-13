@@ -69,6 +69,11 @@
 			</props>
 		</property>
 	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 	<context:component-scan base-package="com.chedb.service"></context:component-scan>
 	<context:component-scan base-package="com.chedb.dao"></context:component-scan>
+	<tx:annotation-driven transaction-manager="transactionManager" />
 </beans>
