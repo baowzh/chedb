@@ -38,11 +38,11 @@ public class AppraiseController {
 	@ResponseBody
 	public String commitAppraise(HttpServletRequest req) {
 		String jsonStr = "failed";
-		String buynoteId = req.getParameter("buynoteId");
+		//String buynoteId = req.getParameter("buynoteId");
 		String providerId = req.getParameter("providerId");
 		// String userId = req.getParameter("userId");
 		String score = req.getParameter("score");
-		String appraiseListStr = req.getParameter("appraiseListStr");
+		//String appraiseListStr = req.getParameter("appraiseListStr");
 		ProviderDaoImpl pdao = new ProviderDaoImpl();
 		if (pdao.updateScore(providerId, score) == true) {
 //			if (dao.updateAppraiseInfo(buynoteId, score) == true) {
