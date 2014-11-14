@@ -8,11 +8,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.forum.model.ModelProvider;
-import com.forum.util.ServerConfig;
-import com.forum.util.DaoUtil;
+import org.springframework.stereotype.Repository;
 
-//
+import com.forum.model.ModelProvider;
+import com.forum.util.DaoUtil;
+import com.forum.util.ServerConfig;
+@Repository("providerDaoImpl")
 public class ProviderDaoImpl {
 	private Connection conn;
 	private Statement stat;

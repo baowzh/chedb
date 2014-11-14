@@ -12,11 +12,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.chedb.dao.ProviderDao;
 import com.forum.model.ModelProvider;
 import com.forum.util.ServerConfig;
 
 @Repository("providerDaoImpl")
-public class ProviderDaoImpl {
+public class ProviderDaoImpl implements ProviderDao  {
 	@Resource(name = "jdbcTemplate")
 	private JdbcTemplate jdbcTemplate;
 

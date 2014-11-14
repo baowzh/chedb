@@ -36,7 +36,4 @@ public class CarServiceImpl implements CarService {
 		return this.carDao.getCarListBySerise(seriseId);
 	}
 	
-
-
-
 }

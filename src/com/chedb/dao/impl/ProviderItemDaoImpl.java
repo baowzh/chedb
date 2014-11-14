@@ -16,7 +16,7 @@ import com.forum.model.ModelProviderItem;
 import com.forum.model.ModelSysItem;
 import com.forum.util.ServerConfig;
 
-@Repository("providerDaoImpl")
+@Repository("providerItemDaoImpl")
 public class ProviderItemDaoImpl implements ProviderItemDao {
 	@Resource(name = "jdbcTemplate")
 	private JdbcTemplate jdbcTemplate;
