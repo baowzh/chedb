@@ -193,12 +193,13 @@ public class ProviderController {
 		if (providerService.update(providerId, infoType, content) == true) {
 			jsonStr = "success";
 		}
+		
 		return jsonStr;
 	}
 
 	private String sendImgFile(String imgfile) throws ServletException,
 			IOException {
-
+      // ≤‚ ‘gitÕ¨≤Ω
 		String con = "<html><body style='background-color: transparent;'>"
 				+ "<div style='text-align:center'><img src='" + imgfile
 				+ "'></div>" + "</body></html>";
