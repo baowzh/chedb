@@ -5,12 +5,14 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.chedb.dao.ProviderDao;
 import com.chedb.service.ProviderService;
 import com.forum.model.ModelProvider;
 
 @Service("providerServiceImpl")
+@Transactional(rollbackFor = Exception.class)
 public class ProviderServiceImpl implements ProviderService {
 	@Resource(name = "providerDaoImpl")
 	private ProviderDao providerDao;

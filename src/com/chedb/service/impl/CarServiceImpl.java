@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.chedb.dao.CarDao;
 import com.chedb.service.CarService;
@@ -12,6 +13,7 @@ import com.forum.model.ModelCar;
 import com.forum.model.ModelCarBrand;
 import com.forum.model.ModelCarSerise;
 @Service("carServiceImpl")
+@Transactional(rollbackFor = Exception.class)
 public class CarServiceImpl implements CarService {
 	@Resource(name = "carDaoImpl")
 	private CarDao carDao;

@@ -13,7 +13,7 @@ import com.forum.model.ModelPublicItem;
 import com.forum.model.ModelVersionInfo;
 
 @Service("appInfoServiceImpl")
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class AppInfoServiceImpl implements AppInfoService {
 	@Resource(name = "appinfoDaoImpl")
 	private AppinfoDao appinfoDao;
@@ -35,14 +35,16 @@ public class AppInfoServiceImpl implements AppInfoService {
 	public boolean commitComplain(String type, String strSingleTitleList,
 			String userId, String text) throws Exception {
 		// TODO Auto-generated method stub
-		return this.appinfoDao.userCommit("complain", strSingleTitleList, text, userId);
+		return this.appinfoDao.userCommit("complain", strSingleTitleList, text,
+				userId);
 	}
 
 	@Override
 	public boolean commitFreeback(String type, String strSingleTitleList,
 			String userId, String text) throws Exception {
 		// TODO Auto-generated method stub
-		return this.appinfoDao.userCommit("freeback", strSingleTitleList, text, userId);
+		return this.appinfoDao.userCommit("freeback", strSingleTitleList, text,
+				userId);
 	}
 
 }

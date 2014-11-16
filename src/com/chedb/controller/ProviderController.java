@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.chedb.service.ProviderService;
 import com.forum.daoimpl.UserDaoImpl;
@@ -23,6 +24,7 @@ public class ProviderController {
 	private ProviderService providerService;
 
 	@RequestMapping(value = { "/summary.do" })
+	@ResponseBody
 	public String summary(HttpServletRequest req) throws Exception {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("商家摘要信息，可以填写以下内容：<br/>");
@@ -34,6 +36,7 @@ public class ProviderController {
 	}
 
 	@RequestMapping(value = { "/phone.do" })
+	@ResponseBody
 	public String phone(HttpServletRequest req) throws Exception {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("商家电话，一定要填，车主需要电话咨询。");
@@ -41,6 +44,7 @@ public class ProviderController {
 	}
 
 	@RequestMapping(value = { "/remark.do" })
+	@ResponseBody
 	public String remark(HttpServletRequest req) throws Exception {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("商家说明，可以填写背景信息，服务内容等，如：<br/>");
@@ -52,6 +56,7 @@ public class ProviderController {
 	}
 
 	@RequestMapping(value = { "/addrNotDw.do" })
+	@ResponseBody
 	public String addrNotDw(HttpServletRequest req) throws Exception {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("你还没有为自己的店定位，这样车主在地图上看不到你，根据距离查询时也查不到你。<br/>");
@@ -65,6 +70,7 @@ public class ProviderController {
 	}
 
 	@RequestMapping(value = { "/getImage.do" })
+	@ResponseBody
 	public String getImage(HttpServletRequest req) throws Exception {
 		String providerId = req.getParameter("providerId");
 		String imgId = req.getParameter("imgId");
@@ -85,6 +91,8 @@ public class ProviderController {
 		return sendImgFile(imagePath);
 	}
 
+	@RequestMapping(value = { "/queryProviderList.do" })
+	@ResponseBody
 	public List<ModelProvider> queryProviderList(HttpServletRequest req)
 			throws Exception {
 		String level = req.getParameter("level");
@@ -98,12 +106,16 @@ public class ProviderController {
 				priceStart, priceEnd, latitude, longitude);
 	}
 
+	@RequestMapping(value = { "/queryProviderListBySearch.do" })
+	@ResponseBody
 	public List<ModelProvider> queryProviderListBySearch(HttpServletRequest req)
 			throws Exception {
 		String searchStr = req.getParameter("searchStr");
 		return providerService.getProviderListBySearch(searchStr);
 	}
 
+	@RequestMapping(value = { "/queryProviderImg.do" })
+	@ResponseBody
 	public String queryProviderImg(HttpServletRequest req) throws Exception {
 		String providerId = req.getParameter("providerId");
 		String imgId = req.getParameter("imgId");
@@ -114,6 +126,8 @@ public class ProviderController {
 		return jsonStr;
 	}
 
+	@RequestMapping(value = { "/unloadProviderImg.do" })
+	@ResponseBody
 	public String unloadProviderImg(HttpServletRequest req) throws Exception {
 		String providerId = req.getParameter("providerId");
 		String imgString = req.getParameter("imgString");
@@ -131,6 +145,8 @@ public class ProviderController {
 		return jsonStr;
 	}
 
+	@RequestMapping(value = { "/editProviderImg.do" })
+	@ResponseBody
 	public String editProviderImg(HttpServletRequest req) throws Exception {
 		String providerId = req.getParameter("providerId");
 		String oldImgIdList = req.getParameter("oldImgIdList");
@@ -152,6 +168,8 @@ public class ProviderController {
 		return jsonStr;
 	}
 
+	@RequestMapping(value = { "/queryProviderByUserId.do" })
+	@ResponseBody
 	public ModelProvider queryProviderByUserId(HttpServletRequest req)
 			throws Exception {
 		String userId = req.getParameter("userId");
@@ -159,6 +177,8 @@ public class ProviderController {
 		return provider;
 	}
 
+	@RequestMapping(value = { "/queryProviderById.do" })
+	@ResponseBody
 	public String queryProviderById(HttpServletRequest req) throws Exception {
 		String providerId = req.getParameter("providerId");
 		String jsonStr = "failed";
@@ -175,6 +195,8 @@ public class ProviderController {
 		return jsonStr;
 	}
 
+	@RequestMapping(value = { "/appendProviderBrowse.do" })
+	@ResponseBody
 	public String appendProviderBrowse(HttpServletRequest req) throws Exception {
 		String providerId = req.getParameter("providerId");
 		System.out.println("ProviderServlet: providerId=" + providerId);
@@ -185,6 +207,8 @@ public class ProviderController {
 		return jsonStr;
 	}
 
+	@RequestMapping(value = { "/modifyProviderInfo.do" })
+	@ResponseBody
 	public String modifyProviderInfo(HttpServletRequest req) throws Exception {
 		String providerId = req.getParameter("providerId");
 		String infoType = req.getParameter("infoType");
@@ -193,13 +217,13 @@ public class ProviderController {
 		if (providerService.update(providerId, infoType, content) == true) {
 			jsonStr = "success";
 		}
-		
+
 		return jsonStr;
 	}
 
 	private String sendImgFile(String imgfile) throws ServletException,
 			IOException {
-      // 测试git同步
+		// 测试git同步
 		String con = "<html><body style='background-color: transparent;'>"
 				+ "<div style='text-align:center'><img src='" + imgfile
 				+ "'></div>" + "</body></html>";

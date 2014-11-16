@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.chedb.dao.ProviderItemDao;
 import com.chedb.service.ProviderItemService;
@@ -12,6 +13,7 @@ import com.forum.model.ModelProviderItem;
 import com.forum.model.ModelSysItem;
 
 @Service("providerItemServiceImpl")
+@Transactional(rollbackFor = Exception.class)
 public class ProviderItemServiceImpl implements ProviderItemService {
 	@Resource(name = "providerItemDaoImpl")
 	private ProviderItemDao providerItemDao;

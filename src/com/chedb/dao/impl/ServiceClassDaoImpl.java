@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.chedb.dao.ServiceClassDao;
 import com.forum.model.ModelServiceClass;
 
-@Repository("buynoteDaoImpl")
+@Repository("serviceClassDaoImpl")
 public class ServiceClassDaoImpl implements ServiceClassDao {
 	@Resource(name = "jdbcTemplate")
 	private JdbcTemplate jdbcTemplate;

@@ -8,12 +8,13 @@ import javax.annotation.Resource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import com.chedb.dao.SysItemDao;
 import com.forum.model.ModelSysItem;
 import com.forum.util.ServerConfig;
 
-//
+@Repository("sysItemDaoImpl")
 public class SysItemDaoImpl implements SysItemDao {
 	@Resource(name = "jdbcTemplate")
 	private JdbcTemplate jdbcTemplate;

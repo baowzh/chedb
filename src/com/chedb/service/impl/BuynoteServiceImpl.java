@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.chedb.dao.BuynoteDao;
 import com.chedb.service.BuynoteService;
@@ -12,6 +13,7 @@ import com.forum.model.ModelBusinote;
 import com.forum.util.GsonUtil;
 import com.google.gson.reflect.TypeToken;
 @Service("buynoteServiceImpl")
+@Transactional(rollbackFor = Exception.class)
 public class BuynoteServiceImpl implements BuynoteService {
 	@Resource(name = "buynoteDaoImpl")
 	private BuynoteDao buynoteDao;
