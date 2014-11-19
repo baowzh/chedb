@@ -47,7 +47,7 @@ public class SystemItemServiceimpl implements SystemItemService {
 	public List<ModelSysItem> getSysItemByClassId(String classId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		return this.getSysItemByClassId(classId);
+		return this.sysItemDao.getSysItemByClassId(classId);
 	}
 
 	@Override
