@@ -80,4 +80,28 @@ public class CarDaoImpl implements CarDao {
 		});
 
 	}
+
+	@Override
+	public List<ModelCar> getDefaultCars(String carid) throws Exception {
+		// TODO Auto-generated method stub
+		String querySql = "select * from car where car_id='" + carid
+				+ "' union select * from " + " car where car_id<>'" + carid
+				+ "' limit 2";
+		return this.jdbcTemplate.query(querySql, new RowMapper<ModelCar>() {
+
+			@Override
+			public ModelCar mapRow(ResultSet rs, int arg1) throws SQLException {
+				// TODO Auto-generated method stub
+				ModelCar modelCar = new ModelCar();
+				// car.car_id, car.car_name, car.maintain_path
+				modelCar.setName(rs.getString("car_name"));
+				modelCar.setId(rs.getString("car_id"));
+				;
+				modelCar.setMaintainPath(rs.getString("maintain_path"));
+				return modelCar;
+			}
+
+		});
+	}
+
 }

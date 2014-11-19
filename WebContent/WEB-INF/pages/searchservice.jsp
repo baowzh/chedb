@@ -12,9 +12,24 @@
 <title>首页</title>
 </head>
 <body>
+
 	<!-- 找商家主页 -->
 	<div id="searchindex" style="display: block;">
-		<div class="navBar">&lt;找商家</div>
+		<!-- 		<div class="navBar">&lt;找商家</div> -->
+		<div class="navBar">
+			<table class="layoutTbl" width="100%">
+				<tr>
+					<td class="tart">&lt;找商家</td>
+					<td width="60"><input class="plain" style="background: #390" /></td>
+					<td width="20"><img src="../img/search.png" width="20"
+						height="20" /></td>
+					<td width="20"><img src="../img/switch.png" width="20"
+						height="20" /></td>
+					<td><button class="greenBtn2">距离</button></td>
+				</tr>
+			</table>
+		</div>
+
 		<div class="searchBar" style="font-size: 14px;">
 			<a href="javascript:showsearchitems(1);"
 				style="color: white; text-decoration: none;">价格不限,换备胎,送油,送水,拖车/运输.困境..</a>
@@ -27,8 +42,10 @@
 			<table width="100%">
 				<tr>
 					<td width="80%"><div style="width: 90px;">&lt;选择项目</div></td>
-					<td style="width: 20%; text-align: right;"><div
-							style="background: #6c0; border-radius: 2px; text-align: center; width: 50px;">确定</div></td>
+					<td style="width: 20%; text-align: right;"><a
+						href="javascript:showsearchitems(2);"
+						style="text-decoration: none; color: white;"><div
+								style="background: #6c0; border-radius: 2px; text-align: center;">确定</div></a></td>
 				</tr>
 			</table>
 		</div>

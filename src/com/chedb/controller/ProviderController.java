@@ -243,7 +243,6 @@ public class ProviderController {
 			List<ModelSysItem> childitems = this.systemItemService
 					.getSysItemByClassId(modelSysItem.getLabelId());
 		}
-
 		return new ModelAndView("searchservice");
 	}
 }

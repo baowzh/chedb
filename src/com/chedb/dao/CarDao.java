@@ -15,4 +15,6 @@ public interface CarDao {
 			throws Exception;
 
 	public List<ModelCar> getCarListBySerise(String seriseId) throws Exception;
+
+	public List<ModelCar> getDefaultCars(String carid) throws Exception;
 }

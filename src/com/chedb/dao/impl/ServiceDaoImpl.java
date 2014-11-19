@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.chedb.dao.ServiceClassDao;
 import com.chedb.dao.ServiceDao;
 import com.forum.model.ModelProvider;
 import com.forum.model.ModelService;
@@ -23,6 +24,8 @@ import com.forum.model.ModelUserAppraise;
 public class ServiceDaoImpl implements ServiceDao {
 	@Resource(name = "jdbcTemplate")
 	private JdbcTemplate jdbcTemplate;
+	@Resource(name = "serviceClassDaoImpl")
+	private ServiceClassDao serviceClassDao;
 
 	public ModelService getServiceInfo(final String serviceId) {
 
@@ -90,10 +93,10 @@ public class ServiceDaoImpl implements ServiceDao {
 	 * @return
 	 */
 	public List<ModelService> getServiceListByClassId(String classId,
-			String carId) {
+			String carId) throws Exception {
 		String sql = "";
-		ServiceClassDaoImpl classDao = new ServiceClassDaoImpl();
-		ModelServiceClass serviceClass = classDao
+		// ServiceClassDaoImpl classDao = new ServiceClassDaoImpl();
+		ModelServiceClass serviceClass = serviceClassDao
 				.queryServiceClassById(classId);
 		if (serviceClass.getNeedCar() == 1) {
 			sql = "select * from service where enable=1 and service_class_id='"

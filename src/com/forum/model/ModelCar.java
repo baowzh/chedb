@@ -1,6 +1,5 @@
 package com.forum.model;
 
-
 public class ModelCar implements java.io.Serializable {
 
 	private String id;
@@ -8,6 +7,7 @@ public class ModelCar implements java.io.Serializable {
 	private String seriseId;
 	private String name;
 	private String maintainPath; // 官方保养手册图片路径
+	private Integer selected;
 
 	public String getId() {
 		return id;
@@ -48,5 +48,14 @@ public class ModelCar implements java.io.Serializable {
 	public void setMaintainPath(String maintainPath) {
 		this.maintainPath = maintainPath;
 	}
+
+	public Integer getSelected() {
+		return selected;
+	}
+
+	public void setSelected(Integer selected) {
+		this.selected = selected;
+	}
 	
+
 }

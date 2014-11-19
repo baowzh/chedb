@@ -6,10 +6,14 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.chedb.service.CarService;
 import com.chedb.service.ServiceIA;
+import com.forum.model.ModelCar;
 import com.forum.model.ModelProvider;
 import com.forum.model.ModelService;
 import com.forum.model.ModelUserAppraise;
@@ -18,6 +22,8 @@ import com.forum.model.ModelUserAppraise;
 public class ServiceController {
 	@Resource(name = "serviceImpl")
 	private ServiceIA ServiceIA;
+	@Resource(name = "carServiceImpl")
+	private CarService carService;
 
 	@RequestMapping("/queryServiceList.do")
 	@ResponseBody
@@ -108,6 +114,20 @@ public class ServiceController {
 		String serviceId = req.getParameter("serviceId");
 		ModelService service = ServiceIA.getServiceInfo(serviceId);
 		return service;
+	}
+
+	@RequestMapping("/serviceindex.do")
+	public ModelAndView carcleanindex(HttpServletRequest req, ModelMap map)
+			throws Exception {
+		// 选择默认车型
+		List<ModelCar> cars = this.carService.getDefaultCars(req
+				.getParameter("carId"));
+		List<ModelService> modelServices = ServiceIA.getServiceListByClassId(
+				req.getParameter("classId"), req.getParameter("carId"));
+		map.put("servicelist", modelServices);
+		map.put("cars", cars);
+		// 查询车型
+		return new ModelAndView(req.getParameter("view"), map);
 	}
 
 }

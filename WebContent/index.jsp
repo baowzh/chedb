@@ -11,11 +11,14 @@
 	<div>
 		<ul>
 			<li><a href="provider/providerindex.do">找商家</a></li>
-			<li><a>洗车</a></li>
-			<li><a>保养</a></li>
-			<li><a>检测</a></li>
-			<li><a>轮胎</a></li>
-			<li><a>我自己</a></li>
+			<li><a href="serviceindex.do?classId=01&view=carclean">洗车</a></li>
+			<li><a
+				href="serviceindex.do?classId=02&view=carmaintains&carId=4191011001">保养</a></li>
+			<li><a
+				href="serviceindex.do?classId=03&view=carrepaire&carId=4191011001">检测</a></li>
+			<li><a
+				href="serviceindex.do?classId=04&view=cartyre&carId=4191011001">轮胎</a></li>
+			<li><a href="#">我自己</a></li>
 		</ul>
 	</div>
 </body>
