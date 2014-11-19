@@ -20,40 +20,40 @@ public class SystemItemServiceimpl implements SystemItemService {
 	@Override
 	public boolean delete(int id) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return this.sysItemDao.delete(id);
 	}
 
 	@Override
 	public boolean update(String userNo, String type, String content)
 			throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return this.sysItemDao.update(userNo, type, content);
 	}
 
 	@Override
 	public List<ModelSysItem> getSysItemClass(String level) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return this.sysItemDao.getSysItemClass(level);
 	}
 
 	@Override
 	public List<ModelSysItem> getProviderSysItem(String providerId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return this.sysItemDao.getProviderSysItem(providerId);
 	}
 
 	@Override
 	public List<ModelSysItem> getSysItemByClassId(String classId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return this.getSysItemByClassId(classId);
 	}
 
 	@Override
 	public ModelSysItem getSysItemById(String itemId) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return this.sysItemDao.getSysItemById(itemId);
 	}
 
 }

@@ -1,0 +1,67 @@
+<%@ page language="java" contentType="text/html; charset=gbk"
+	pageEncoding="gbk"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>商家介绍页</title>
+<link href="css/main.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+<div class="navBar">
+  <table class="layoutTbl" width="100%">
+    <tr>
+      <td class="">&lt;商家：102381</td>
+      <td width="20"><img src="img/contextMenu.png" width="20" height="20" /></td>
+    </tr>
+  </table>
+</div>
+<h3 class="h31">全诚汽车修理厂</h3>
+<div> 吉实颉在要要，快修，保养 </div>
+<div>
+  <table class="layoutTbl" width="100%">
+    <tr>
+      <td class=""> 内蒙古自治区 呼和浩特 赛罕区</td>
+      <td width="80"><button class="greenBtn" >地图导航</button></td>
+    </tr>
+    <tr>
+      <td class=""> 电话：0471-1230000</td>
+      <td width="80"><button class="greenBtn" >电话咨询</button></td>
+    </tr>
+  </table>
+</div>
+<div class="listBox" style=" margin-top:10px; line-height:200% "> 综合打分：<span class="redText">未有人打分或评价</span><br />
+  商家人气：<span class=" redText">0次成效/4次浏览</span> </div>
+<div class="m10"><img src="img/th.jpg" width="300" height="256" /> </div>
+<hr class="seperator"/>
+<h3 class="h31">服务项目</h3>
+<div class="listBox">
+	<span class="textIcon">补胎</span>服务项目
+  <table class="layoutTbl" width="100%">
+    <tr>
+      <td class=" greenText">成交0次  </td>
+      <td width="80" class="greenText">还未定价</td>
+    </tr>
+  </table>
+</div>
+<div class="listBox">
+	<span class="textIcon">补胎</span>服务项目
+  <table class="layoutTbl" width="100%">
+    <tr>
+      <td class=" greenText">成交0次  </td>
+      <td width="80" class="greenText">还未定价</td>
+    </tr>
+  </table>
+</div>
+<div class="listBox">
+	<span class="textIcon">补胎</span>服务项目
+  <table class="layoutTbl" width="100%">
+    <tr>
+      <td class=" greenText">成交0次  </td>
+      <td width="80" class="greenText">还未定价</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

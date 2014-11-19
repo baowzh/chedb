@@ -10,11 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.chedb.service.ProviderService;
+import com.chedb.service.SystemItemService;
 import com.forum.daoimpl.UserDaoImpl;
 import com.forum.dbdata.FileData;
 import com.forum.model.ModelProvider;
+import com.forum.model.ModelSysItem;
 import com.forum.util.GsonUtil;
 
 @Controller
@@ -22,6 +25,8 @@ import com.forum.util.GsonUtil;
 public class ProviderController {
 	@Resource(name = "providerServiceImpl")
 	private ProviderService providerService;
+	@Resource(name = "systemItemServiceimpl")
+	private SystemItemService systemItemService;
 
 	@RequestMapping(value = { "/summary.do" })
 	@ResponseBody
@@ -228,5 +233,17 @@ public class ProviderController {
 				+ "<div style='text-align:center'><img src='" + imgfile
 				+ "'></div>" + "</body></html>";
 		return con;
+	}
+
+	@RequestMapping("/providerindex.do")
+	public ModelAndView providerindex(HttpServletRequest req) throws Exception {
+		List<ModelSysItem> items = systemItemService.getSysItemClass("1");
+		// 获取跟每个大类对应的明细
+		for (ModelSysItem modelSysItem : items) {
+			List<ModelSysItem> childitems = this.systemItemService
+					.getSysItemByClassId(modelSysItem.getLabelId());
+		}
+
+		return new ModelAndView("searchservice");
 	}
 }

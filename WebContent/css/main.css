@@ -1,0 +1,156 @@
+@charset "utf-8";
+/* CSS Document */
+.greenBtn {
+	background: #390;
+	border: none;
+	border-radius: 3px;
+	color: white;
+	line-height: 150%;
+}
+
+.greenBtn2 {
+	background: #6c0;
+	border: none;
+	border-radius: 3px;
+	color: white;
+	line-height: 150%;
+}
+
+input.plain {
+	border: none;
+	width: 80px;
+	background-color: transparent;
+}
+
+.androidInputBtnBorder {
+	border: solid 1px #ccc;
+	border-top: none;
+}
+
+.textIcon {
+	display: inline-block;
+	line-height: 150%;
+	color: white;
+	background: #bbb;
+	border-radius: 3px;
+	padding: 0 10px;
+	font-size:14px;
+}
+
+.textIconActive {
+	display: inline-block;
+	line-height: 150%;
+	color: white;
+	background: #390;
+	border-radius: 3px;
+	padding: 0 10px;
+}
+
+.iconWrapper {
+	padding: 0.5em 2em;
+	line-height: 200%
+}
+
+.tact {
+	text-align: center;
+}
+
+.tart {
+	text-align: right;
+}
+
+.bluLbl {
+	background: #ddf;
+	line-height: 150%;
+	padding: 0em 1.5em;
+}
+
+table.layoutTbl {
+	border: none;
+}
+
+table.layoutTbl td {
+	border: none
+}
+
+.navBar {
+	background: #390;
+	line-height: 200%;
+	color: white;
+	padding: 0 0.5em;
+}
+
+.searchBar {
+	background: #4a0;
+	line-height: 200%;
+	color: white;
+	padding: 0 0.5em;
+}
+
+.listBox {
+	border: solid 1px #ccc;
+	border-radius: 5px;
+	margin: 0 10px;
+	padding: 10px;
+}
+
+.greyText {
+	color: #999;
+	padding: 10px;
+}
+
+.greenText {
+	color: #360
+}
+
+.redText {
+	color: red;
+}
+
+h1, h2, h3, h4 {
+	padding: 0;
+	margin: 0;
+}
+
+h3.h31 {
+	text-align: center;
+	padding: 1em;
+}
+
+h3.h32 {
+	padding: 1em;
+}
+
+.m10 {
+	margin: 10px;
+}
+
+.seperator {
+	border: none;
+	border-top: solid 1px #333
+}
+
+.card1 {
+	border: solid 1px #ccc;
+	border-radius: 5px;
+	margin: 10px;
+}
+
+.cardTitle {
+	background: #ddd;
+	line-height: 150%;
+}
+
+.card1 .cardLayer+.cardLayer {
+	border-top: solid 1px #ccc
+}
+
+.bigBtn {
+	width: 120px;
+	padding: 10px;
+	text-align: center;
+	display: inline-block;
+	background: #390;
+	color: white;
+	border-radius: 5px;
+}
