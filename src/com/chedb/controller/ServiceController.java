@@ -130,4 +130,9 @@ public class ServiceController {
 		return new ModelAndView(req.getParameter("view"), map);
 	}
 
+	@RequestMapping("/serviceItemDetail.do")
+	public ModelAndView serviceItemDetail(HttpServletRequest req, ModelMap map) {
+		return new ModelAndView("maintainitems", map);
+	}
+
 }

@@ -22,7 +22,7 @@
 	border-radius: 3px;
 	color: white;
 	line-height: 150%;
-	height: 4em;
+	height: 3em;
 	width: 20em;
 }
 
@@ -184,7 +184,7 @@ h3.h32 {
 .loginCard {
 	background-color: #FFF;
 	border-radius: 5px;
-	margin: 1em;
+	margin: 3px;
 	padding: 1em;
 }
 }

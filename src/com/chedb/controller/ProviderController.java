@@ -245,4 +245,15 @@ public class ProviderController {
 		}
 		return new ModelAndView("searchservice");
 	}
+	@RequestMapping("/providerdetail.do")
+	public ModelAndView providerdetail(HttpServletRequest req) throws Exception {
+//		List<ModelSysItem> items = systemItemService.getSysItemClass("1");
+//		// 获取跟每个大类对应的明细
+//		for (ModelSysItem modelSysItem : items) {
+//			List<ModelSysItem> childitems = this.systemItemService
+//					.getSysItemByClassId(modelSysItem.getLabelId());
+//		}
+		return new ModelAndView("servicedetail");
+	}
+	
 }

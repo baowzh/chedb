@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.chedb.service.UserService;
 import com.forum.daoimpl.ProviderDaoImpl;
@@ -161,6 +162,16 @@ public class UserController {
 			jsonStr = GsonUtil.getGson().toJson(listCar);
 		}
 		return jsonStr;
+	}
+
+	@RequestMapping("/myself.do")
+	public ModelAndView myself(HttpServletRequest req) {
+		return new ModelAndView("myself");
+	}
+
+	@RequestMapping("/regist.do")
+	public ModelAndView regist(HttpServletRequest req) {
+		return new ModelAndView("regist");
 	}
 
 }

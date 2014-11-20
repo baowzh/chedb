@@ -4,14 +4,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
-<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>汽车保养</title>
 <link href="css/main.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-	<div class="navBar">
-		&lt;保养
-	</div>
+	<div class="navBar">&lt;保养</div>
 	<h3 class="h32">世嘉1.6L/2.0L每5000公里常规保养</h3>
 	<div class="m10">
 		<table class="layoutTbl" width="100%">
@@ -47,9 +50,10 @@
 			<div class=" m10">
 				<table class="layoutTbl" width="100%">
 					<tr>
-						<td width="120" class="tact"><img src="img/th.jpg"
-							width="120" height="120" /></td>
-						<td rowspan="2" valign="top">内蒙古华程进口汽车维修公司<br /> <span
+						<td width="120" class="tact"><a href="provider/providerdetail.do"><img src="img/th.jpg"
+							width="120" height="120" />
+							</a></td>
+						<td rowspan="2" valign="top"><a href="provider/providerdetail.do" style="text-decoration:none;color:#999;">内蒙古华程进口汽车维修公司</a><br /> <span
 							class="greyText">内蒙古自治区 呼和浩特 新城区海拉尔大街809号，华晨酒店<br />
 						</span><span class="redText">4.6分/ 247人打分</span></td>
 					</tr>

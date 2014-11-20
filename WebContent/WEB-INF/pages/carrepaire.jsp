@@ -5,6 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>保养首页</title>
 <link href="css/main.css" rel="stylesheet" type="text/css" />
 </head>
@@ -40,6 +44,13 @@
 
 	<div class="card1">
 		<div class="cardTitle tact">可选项目</div>
+		<c:if test="${empty servicelist}">
+			<div class="cardLayer">
+				<div class="m10">
+					<span class="greyText">该车型没有可选项目</span>
+				</div>
+			</div>
+		</c:if>
 		<c:forEach items="${servicelist}" var="modelService"
 			varStatus="status">
 			<div class="cardLayer">
@@ -66,18 +77,11 @@
 				</div>
 			</div>
 		</c:forEach>
-		<!-- 		<div class="cardLayer"> -->
-		<!-- 			<div class="m10"> -->
-		<!-- 				<span class="greyText">该车型没有可选项目</span> -->
-		<!-- 			</div> -->
-		<!-- 		</div> -->
 	</div>
 
-
 	<div class="listBox">
-		<p>以猢的模式提供比目前更高品质的汽车保养服务</p>
-		<p>1、集中采购统一配送洞口和配件</p>
-		<p>2、</p>
+		<p>以中立机构的身份来为车辆做检查，并提供一份客观的检测报告，不在忽悠车主过度消费，真正让你了解什么需要换，什么不需要换</p>
+		<p>目前我们正在研制详细检测项目，不久开通服务。</p>
 	</div>
 
 	<div class="m10">

@@ -4,7 +4,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
-<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>用户注册</title>
 <link href="css/main.css" rel="stylesheet" type="text/css" />
 
 </head>

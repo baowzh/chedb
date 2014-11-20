@@ -4,6 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>车大邦</title>
 </head>
 <body>
@@ -18,7 +22,7 @@
 				href="serviceindex.do?classId=03&view=carrepaire&carId=4191011001">检测</a></li>
 			<li><a
 				href="serviceindex.do?classId=04&view=cartyre&carId=4191011001">轮胎</a></li>
-			<li><a href="#">我自己</a></li>
+			<li><a href="myself.do">我自己</a></li>
 		</ul>
 	</div>
 </body>

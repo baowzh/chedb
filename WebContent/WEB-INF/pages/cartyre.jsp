@@ -5,13 +5,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
-<title>保养首页</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>&lt;车大邦</title>
 <link href="css/main.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-	<div class="navBar">&lt;保养</div>
-	<h3 class="h32">汽车常规保养</h3>
+	<!-- 	<div class="navBar">&lt;保养</div> -->
+	<h3 class="h32">轮胎</h3>
 	<div class="card1">
 		<div class="cardTitle tact">选择车型</div>
 		<div class=" m10">
@@ -47,12 +51,14 @@
 					<c:out value="${modelService.name}" />
 					<table style="width: 100%;">
 						<tr>
-							<td><span class="greyText">奉还发动机机油</span></td>
+							<td><span class="greyText"><c:out
+										value="${modelService.item1Txt}" /></span></td>
 							<td></td>
 							<td></td>
 						</tr>
 						<tr>
-							<td><span class="greyText">奉还发动机机油</span></td>
+							<td><span class="greyText"><c:out
+										value="${modelService.item2Txt}" /></span></td>
 							<td></td>
 							<td></td>
 						</tr>
@@ -75,9 +81,8 @@
 
 
 	<div class="listBox">
-		<p>以猢的模式提供比目前更高品质的汽车保养服务</p>
-		<p>1、集中采购统一配送洞口和配件</p>
-		<p>2、</p>
+		<p>专业的机构才能做好专业的事，让车主的钱花的试试在在。</p>
+
 	</div>
 
 	<div class="m10">
