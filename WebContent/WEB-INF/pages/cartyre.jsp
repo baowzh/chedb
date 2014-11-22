@@ -14,7 +14,9 @@
 </head>
 
 <body>
-	<!-- 	<div class="navBar">&lt;保养</div> -->
+	<div class="navBar">
+		<a href="index.jsp" style="color: white; text-decoration: none;">&lt;轮胎</a>
+	</div>
 	<h3 class="h32">轮胎</h3>
 	<div class="card1">
 		<div class="cardTitle tact">选择车型</div>
@@ -48,27 +50,32 @@
 			varStatus="status">
 			<div class="cardLayer">
 				<div class="m10">
-					<c:out value="${modelService.name}" />
-					<table style="width: 100%;">
-						<tr>
-							<td><span class="greyText"><c:out
-										value="${modelService.item1Txt}" /></span></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td><span class="greyText"><c:out
-										value="${modelService.item2Txt}" /></span></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td>$<c:out value="${modelService.price}" />元
-							</td>
-						</tr>
-					</table>
+					<a
+						href="serviceItemDetail.do?serviceId=<c:out
+									value="${modelService.serviceId}" />&serviceClassId=02"
+						style="color: #000; text-decoration: none;"> <c:out
+							value="${modelService.name}" />
+						<table style="width: 100%;">
+							<tr>
+								<td><span class="greyText"><c:out
+											value="${modelService.item1Txt}" /></span></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><span class="greyText"><c:out
+											value="${modelService.item2Txt}" /></span></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td>$<c:out value="${modelService.price}" />元
+								</td>
+							</tr>
+						</table>
+					</a>
 				</div>
 			</div>
 		</c:forEach>

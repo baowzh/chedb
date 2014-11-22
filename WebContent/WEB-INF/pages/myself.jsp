@@ -18,7 +18,8 @@
 	<div class="navBar">
 		<table width="100%" class="layoutTbl">
 			<tr>
-				<td width="83%">&nbsp;&lt;µÇÂ¼</td>
+				<td width="83%"><a href="index.jsp"
+					style="color: white; text-decoration: none;">&nbsp;&lt;µÇÂ¼</a></td>
 				<td width="17%" class="tart">&nbsp;<input name="" type="button"
 					class="greenBtn2" value="×¢²á "
 					onclick="javascript:window.location.href='regist.do'" />

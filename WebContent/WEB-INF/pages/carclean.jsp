@@ -15,7 +15,9 @@
 </head>
 
 <body>
-	<div class="navBar">&lt;洗车</div>
+	<div class="navBar">
+		<a href="index.jsp" style="color: white; text-decoration: none;">&lt;洗车</a>
+	</div>
 	<div class="card1">
 		<div class="cardTitle tact">可选项目</div>
 		<c:forEach items="${servicelist}" var="modelService"
@@ -24,7 +26,9 @@
 				<table class="layoutTbl" width="100%">
 
 					<tr>
-						<td><a href="serviceItemDetail.do"
+						<td><a
+							href="serviceItemDetail.do?serviceId=<c:out
+									value="${modelService.serviceId}" />&serviceClassId=01"
 							style="color: #000; text-decoration: none;"> <c:out
 									value="${modelService.name}" />
 						</a></td>

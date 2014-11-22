@@ -1,20 +1,22 @@
 package com.forum.model;
 
+import java.util.List;
 
 public class ModelSysItem implements java.io.Serializable {
 
 	private String parentId;
-	
+
 	private String labelId;
-	
+
 	private String title;
-	
+
 	private int select;
+	private List<ModelSysItem> childitems;
 
 	public boolean equal(ModelSysItem label) {
 		return this.labelId.equals(label.getLabelId());
 	}
-	
+
 	public String getParentId() {
 		return parentId;
 	}
@@ -46,6 +48,13 @@ public class ModelSysItem implements java.io.Serializable {
 	public void setSelect(int select) {
 		this.select = select;
 	}
-	
-	
+
+	public List<ModelSysItem> getChilditems() {
+		return childitems;
+	}
+
+	public void setChilditems(List<ModelSysItem> childitems) {
+		this.childitems = childitems;
+	}
+
 }

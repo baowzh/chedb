@@ -14,7 +14,9 @@
 </head>
 
 <body>
-	<div class="navBar">&lt;检测</div>
+	<div class="navBar">
+		<a href="index.jsp" style="color: white; text-decoration: none;">&lt;检测</a>
+	</div>
 	<h3 class="h32">汽车中立检测</h3>
 	<div class="card1">
 		<div class="cardTitle tact">选择车型</div>
@@ -55,25 +57,30 @@
 			varStatus="status">
 			<div class="cardLayer">
 				<div class="m10">
-					<c:out value="${modelService.name}" />
-					<table style="width: 100%;">
-						<tr>
-							<td><span class="greyText">奉还发动机机油</span></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td><span class="greyText">奉还发动机机油</span></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td>$<c:out value="${modelService.price}" />元
-							</td>
-						</tr>
-					</table>
+					<a
+						href="serviceItemDetail.do?serviceId=<c:out
+									value="${modelService.serviceId}" />&serviceClassId=03"
+						style="color: #000; text-decoration: none;"> <c:out
+							value="${modelService.name}" />
+						<table style="width: 100%;">
+							<tr>
+								<td><span class="greyText">奉还发动机机油</span></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><span class="greyText">奉还发动机机油</span></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td>$<c:out value="${modelService.price}" />元
+								</td>
+							</tr>
+						</table>
+					</a>
 				</div>
 			</div>
 		</c:forEach>

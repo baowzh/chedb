@@ -7,11 +7,15 @@ import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
+import net.sf.json.JSONObject;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.chedb.service.ProviderItemService;
 import com.chedb.service.ProviderService;
 import com.chedb.service.SystemItemService;
 import com.forum.daoimpl.UserDaoImpl;
@@ -27,6 +31,8 @@ public class ProviderController {
 	private ProviderService providerService;
 	@Resource(name = "systemItemServiceimpl")
 	private SystemItemService systemItemService;
+	@Resource(name = "providerItemServiceImpl")
+	private ProviderItemService providerItemService;
 
 	@RequestMapping(value = { "/summary.do" })
 	@ResponseBody
@@ -236,24 +242,33 @@ public class ProviderController {
 	}
 
 	@RequestMapping("/providerindex.do")
-	public ModelAndView providerindex(HttpServletRequest req) throws Exception {
+	public ModelAndView providerindex(HttpServletRequest req, ModelMap map)
+			throws Exception {
 		List<ModelSysItem> items = systemItemService.getSysItemClass("1");
 		// 获取跟每个大类对应的明细
 		for (ModelSysItem modelSysItem : items) {
 			List<ModelSysItem> childitems = this.systemItemService
 					.getSysItemByClassId(modelSysItem.getLabelId());
+			modelSysItem.setChilditems(childitems);
 		}
-		return new ModelAndView("searchservice");
+		map.put("items", items);
+		JSONObject json = new JSONObject();
+		json.put("items", items);
+		map.put("serviceItems", json.toString());
+		return new ModelAndView("searchservice", map);
 	}
+
 	@RequestMapping("/providerdetail.do")
-	public ModelAndView providerdetail(HttpServletRequest req) throws Exception {
-//		List<ModelSysItem> items = systemItemService.getSysItemClass("1");
-//		// 获取跟每个大类对应的明细
-//		for (ModelSysItem modelSysItem : items) {
-//			List<ModelSysItem> childitems = this.systemItemService
-//					.getSysItemByClassId(modelSysItem.getLabelId());
-//		}
-		return new ModelAndView("servicedetail");
+	public ModelAndView providerdetail(HttpServletRequest req, ModelMap map)
+			throws Exception {
+		String providerId = req.getParameter("providerId");
+		ModelProvider modelProvider = this.providerService
+				.queryProviderById(providerId);
+		map.put("modelProvider", modelProvider);
+		// 获取此商家能够提供的服务列表
+		List<ModelSysItem> items = this.providerItemService
+				.getProviderItemBySysItemId(providerId, null);
+		map.put("items", items);
+		return new ModelAndView("servicedetail", map);
 	}
-	
 }

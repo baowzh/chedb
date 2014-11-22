@@ -70,7 +70,7 @@ public class ProviderItemServiceImpl implements ProviderItemService {
 	public List<ModelSysItem> getProviderItemBySysItemId(String providerId,
 			String sysItemId) throws Exception {
 		// TODO Auto-generated method stub
-		return this.getProviderItemBySysItemId(providerId, sysItemId);
+		return this.providerItemDao.getProviderItemBySysItemId(providerId, sysItemId);
 	}
 
 	@Override

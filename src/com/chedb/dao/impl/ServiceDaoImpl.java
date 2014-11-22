@@ -208,7 +208,7 @@ public class ServiceDaoImpl implements ServiceDao {
 				item.setLatitude(rs.getDouble("latitude"));//
 				item.setLongitude(rs.getDouble("longitude"));//
 				item.setImgIdListStr(rs.getString("imgid_list"));
-				return null;
+				return item;
 			}
 
 		});

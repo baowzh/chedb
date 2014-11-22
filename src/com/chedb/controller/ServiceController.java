@@ -132,6 +132,38 @@ public class ServiceController {
 
 	@RequestMapping("/serviceItemDetail.do")
 	public ModelAndView serviceItemDetail(HttpServletRequest req, ModelMap map) {
+		try {
+			String serviceClassId = req.getParameter("serviceClassId");
+			String serviceId = req.getParameter("serviceId");
+			String start = req.getParameter("start");
+			String count = req.getParameter("count");
+			String latitude = req.getParameter("latitude");
+			String longitude = req.getParameter("longitude");
+			ModelService modelService = this.ServiceIA
+					.getServiceInfo(serviceId);
+			map.put("modelService", modelService);
+			Integer serviveCount = this.ServiceIA
+					.getProviderCountByServiceId(serviceId);
+			map.put("serviveCount", serviveCount);
+			// 查询提供此服务的供应商个数
+			if (start == null || start.equalsIgnoreCase("")) {
+				start = "0";
+			}
+			if (count == null || count.equalsIgnoreCase("")) {
+				count = "2";
+			}
+			List<ModelProvider> providers = this.ServiceIA
+					.getProviderListByServiceId(serviceId, start, count,
+							latitude, longitude);
+			map.put("providers", providers);
+			map.put("serviceClassId", serviceClassId);
+			List<ModelUserAppraise> apprsises = this.ServiceIA
+					.getAppraiseListByServiceId(serviceClassId, serviceId,
+							start, "10");
+			map.put("apprsises", apprsises);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 		return new ModelAndView("maintainitems", map);
 	}
 
